@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="clock">
+      <span id="hrs">00</span>
+      <span>:</span>
+      <span id="min">00</span>
+      <span>:</span>
+      <span id="sec">00</span>
+      <span id="ampm">&nbspAM</span>
+    </div>
+  </div>
+
+  <script>
+    let hrs = document.getElementById("hrs");
+    let min = document.getElementById("min");
+    let sec = document.getElementById("sec");
+    let am_pm = document.getElementById("ampm");
+
+    setInterval(() => {
+      let currentTime = new Date();
+
+      let hours = currentTime.getHours();
+      let minutes = currentTime.getMinutes();
+      let seconds = currentTime.getSeconds();
+
+      let am_pm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      hrs.innerHTML = hours;
+      min.innerHTML = minutes;
+      sec.innerHTML = seconds;
+      am_pm.innerHTML = am_pm;
+    }, 1000);
+  </script>
+</body>
+
+</html>
